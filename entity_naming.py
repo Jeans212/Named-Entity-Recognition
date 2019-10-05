@@ -47,12 +47,9 @@ def entity_naming(sentence):
     # loading the language that would be recognized
     nlp = spacy.load("en_core_web_sm")
     document = nlp(sentence)
-    #prints the recognized words and their types
-    print("\nList of words and their entities:")
-    pprint([(word.text, word.label_) for word in document.ents])
-    #prints the type of the word recognized and the meaning
-    print("\nExplanation of Entities:")
-    pprint([(word.ent_type_, spacy.explain(word.ent_type_)) for word in document])
+    #prints the recognized words and the meaning of their entities
+    print("\nList of entities and their meaning: ")
+    pprint([(word.text, word.label_, spacy.explain(word.label_)) for word in document.ents])
 
 if __name__ == '__main__':
     CORPUS = input("Enter the sentence: ")
